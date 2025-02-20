@@ -1,17 +1,19 @@
 from django.shortcuts import render
+from unicodedata import category
+
 from .models import *
 
 
 
 def yangi(request):
-    talabalar = News.objects.all()
     news = News.objects.all()
+    category = Category.objects.all()
     context = {
-        "talabalar": talabalar,
         'news': news,
         "title": "News",
-        "filtr": ['sport', 'texnologiya', 'siyosat', 'sogliq']
+        "category":category,
 
     }
     return render(request, 'Newsx/yangi.html', context=context)
+
 
